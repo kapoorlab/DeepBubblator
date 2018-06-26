@@ -1,3 +1,4 @@
+
 import tensorflow as tf
 
 W = tf.Variable([10.], tf.float32)

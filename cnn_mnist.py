@@ -10,7 +10,7 @@ from __future__ import print_function
 # Imports
 import numpy as np
 import tensorflow as tf
-from keras.layers.core import Activation
+
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -109,7 +109,7 @@ def main(unused_argv):
      train_labels = np.asarray(mnist.train.labels, dtype = np.int32)
      eval_data = mnist.test.images
      eval_labels = np.asarray(mnist.test.labels, dtype = np.int32)
-     mnist_classifier = tf.estimator.Estimator(model_fn = cnn_model_fn, model_dir="/Users/varunkapoor/mnist_convnet_model")     
+     mnist_classifier = tf.estimator.Estimator(model_fn = cnn_model_fn, model_dir="/Users/aimachine/mnist_convnet_model")     
      tensors_to_log = {"probabilities": "softmax_tensor"}
      logging_hook = tf.train.LoggingTensorHook(
       tensors=tensors_to_log, every_n_iter=50)
@@ -122,7 +122,7 @@ def main(unused_argv):
      shuffle=True)
      mnist_classifier.train(
      input_fn=train_input_fn,
-     steps=1,
+     steps=1000,
      hooks=[logging_hook])
  # Evaluate the model and print results
      eval_input_fn = tf.estimator.inputs.numpy_input_fn(
